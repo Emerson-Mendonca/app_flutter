@@ -4,7 +4,6 @@
   // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-
     {
       "name": "Dart: Run all Tests",
       "request": "launch",
@@ -12,18 +11,20 @@
       "program": "./test/"
     },
     {
-      "name": "Flutter: Man iOS",
+      "name": "Flutter Debug : Man Motorola",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",
-      "deviceId": "iphone"
+      "deviceId": "motorola",
+      "args": ["--debug"]
     },
     {
-      "name": "Flutter: Man Android",
+      "name": "Flutter Release: Man Motorola",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",
-      "deviceId": "sdk"
+      "deviceId": "motorola",
+      "args": ["--release"]
     }
   ]
 }
