@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:dog/dog.dart';
 import 'package:get/get.dart';
 
@@ -13,10 +15,8 @@ class DebugLog {
         'Response': response.body.toString(),
       }
     },
-        tag: 'HTTP Status: ' +
-            response.statusCode.toString() +
-            ' Method: ' +
-            response.request!.method.toString().toUpperCase(),
+        tag:
+            'HTTP Status: ${response.statusCode} Method: ${response.request!.method.toString().toUpperCase()}',
         title: response.request!.url.toString());
   }
 
@@ -35,10 +35,8 @@ class DebugLog {
         'Response': response.body.toString(),
       }
     },
-        tag: 'HTTP Status: ' +
-            response.statusCode.toString() +
-            ' Method: ' +
-            response.request!.method.toString().toUpperCase(),
+        tag:
+            'HTTP Status: ${response.statusCode} Method: ${response.request!.method.toString().toUpperCase()}',
         title: response.request!.url.toString());
   }
 }
