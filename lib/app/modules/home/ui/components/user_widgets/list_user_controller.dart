@@ -1,10 +1,9 @@
-import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
-
 import 'package:app_flutter/app/data/model/comment_model.dart';
 import 'package:app_flutter/app/data/providers/comment_provider.dart';
 import 'package:app_flutter/app/data/providers/post_provider.dart';
 import 'package:app_flutter/app/widgets/reusable_global_widget.dart';
+import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 
 class ListUserController extends GetxController with StateMixin {
   final PostProvider _apiProviderPost = PostProvider();
@@ -43,17 +42,17 @@ class ListUserController extends GetxController with StateMixin {
     }
   }
 
-  Future<CommentModel?> findComment({
+  Future<List<CommentModel>?> findComment({
     required String userId,
     required String postId,
     required String commentsId,
   }) async {
     try {
-      CommentModel? commentModelResponse =
+      List<CommentModel>? commentModelResponse =
           await _apiCommentProvider.findComment(userId, postId, commentsId);
       return commentModelResponse;
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
       rethrow;
     }
   }

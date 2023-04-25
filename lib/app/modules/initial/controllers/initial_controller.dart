@@ -26,7 +26,7 @@ class InitialController extends GetxController {
   }
 
   Future<void> _checkVersion() async {
-    if (await getPackageInfo().then((value) => value.version == "1.0.1")) {
+    if (await getPackageInfo().then((value) => value.version == "0.0.2")) {
       return;
     }
 

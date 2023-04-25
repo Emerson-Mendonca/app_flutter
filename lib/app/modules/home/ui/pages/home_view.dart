@@ -1,10 +1,11 @@
+// ignore_for_file: library_private_types_in_public_api
+
+import 'package:app_flutter/app/modules/home/infra/models/user_model.dart';
+import 'package:app_flutter/app/modules/home/ui/components/user_widgets/list_user_page.dart';
+import 'package:app_flutter/app/modules/home/ui/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transparent_image/transparent_image.dart';
-
-import 'package:app_flutter/app/data/model/user_model.dart';
-import 'package:app_flutter/app/modules/home/controllers/home_controller.dart';
-import 'package:app_flutter/app/modules/home/widgets/user_widgets/list_user_page.dart';
 
 class HomeView extends StatefulWidget {
   final HomeController controller;
@@ -99,7 +100,7 @@ class _HomeView extends State<HomeView> {
                                 children: [
                                   InkWell(
                                     onTap: () {
-                                      print("TAP");
+                                      debugPrint("TAP");
                                     },
                                     child: Container(
                                       height: 64,

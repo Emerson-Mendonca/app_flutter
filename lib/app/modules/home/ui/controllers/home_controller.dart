@@ -1,12 +1,10 @@
-
+import 'package:app_flutter/app/modules/home/domain/usecases/get_users_usecase_impl.dart';
+import 'package:app_flutter/app/modules/home/infra/models/user_model.dart';
+import 'package:app_flutter/app/widgets/reusable_global_widget.dart';
 import 'package:get/get.dart';
 
-import 'package:app_flutter/app/data/model/user_model.dart';
-import 'package:app_flutter/app/data/providers/user_provider.dart';
-import 'package:app_flutter/app/widgets/reusable_global_widget.dart';
-
 class HomeController extends GetxController with StateMixin {
-  final UserProvider _apiUserProvider = UserProvider();
+  final GetUsersUseCaseImpl _getUsersUseCase = Get.find();
   late List<UserModel> userModelResponse;
 
   @override
@@ -16,9 +14,9 @@ class HomeController extends GetxController with StateMixin {
   }
 
   Future<void> findUserAll() async {
-    _apiUserProvider.findUserAll().then((response) {
-      userModelResponse = response;
-      change(response, status: RxStatus.success());
+    await _getUsersUseCase.getUsers().then((response) {
+      userModelResponse = response.body;
+      change(response.body, status: RxStatus.success());
     }, onError: (err) {
       ReusableGlobalWidget().openBottomSheet(
           textTitulo: 'Erro', textStyle: 'Ao carregar os dados da API');

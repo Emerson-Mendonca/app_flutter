@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_flutter/app/data/model/comment_model.dart';
+import 'package:app_flutter/app/data/model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class ReusableGlobalWidget {
   ReusableGlobalWidget();
@@ -81,53 +83,96 @@ class ReusableGlobalWidget {
           future: comment,
           builder: (_, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
-              return Column(
-                children: [
-                  SizedBox(
-                    height: 350,
-                    child: ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: snapshot.data.length,
-                        itemBuilder: (_, index) {
-                          final CommentModel itemPost = snapshot.data[index];
-                          return Column(
-                            children: [
-                              Text(
-                                itemPost.body,
-                                textAlign: TextAlign.left,
-                                style: const TextStyle(
-                                  fontSize: 18,
+              return SizedBox(
+                height: 350,
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 350,
+                      width: double.infinity,
+                      child: Scrollbar(
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (_, index) {
+                              final CommentModel itemComment =
+                                  snapshot.data[index];
+                              final UserModel itemUser = itemComment.user;
+                              return Container(
+                                margin:
+                                    const EdgeInsets.only(top: 12, bottom: 3),
+                                color: Colors.black12,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.only(
+                                          left: 12, right: 12),
+                                      child: Row(
+                                        children: [
+                                          CircleAvatar(
+                                            backgroundImage:
+                                                FadeInImage.memoryNetwork(
+                                              placeholder: kTransparentImage,
+                                              image: itemUser.avatar,
+                                            ).image,
+                                            radius: 20,
+                                          ),
+                                          const SizedBox(
+                                            width: 12.0,
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  itemUser.name,
+                                                  style: const TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.black87,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            width: 8.0,
+                                          ),
+                                          const Icon(
+                                            Icons.more_vert,
+                                            color: Colors.white60,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 8.0,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          itemComment.body,
+                                          textAlign: TextAlign.left,
+                                          style: const TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.black87,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ],
-                          );
-                        }),
-                  ),
-                  Column(
-                    children: [
-                      const Padding(padding: EdgeInsets.only(top: 16)),
-                      OutlinedButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        style: OutlinedButton.styleFrom(
-                          side: const BorderSide(
-                            width: 2.0,
-                            color: Colors.blue,
-                          ),
-                        ),
-                        child: const Text(
-                          'Close',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black54,
-                          ),
-                        ),
+                              );
+                            }),
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               );
             } else if (snapshot.hasError) {
               return Center(child: Text(snapshot.error.toString()));
