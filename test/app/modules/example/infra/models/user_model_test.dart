@@ -1,4 +1,4 @@
-import 'package:app_flutter/app/modules/home/infra/models/user_model.dart';
+import 'package:app_flutter/modules/home/infra/models/user_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'get_users_usecase_mock.dart';

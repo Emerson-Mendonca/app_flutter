@@ -1,7 +1,7 @@
-import 'package:app_flutter/app/modules/home/domain/usecases/get_users_usecase_impl.dart';
-import 'package:app_flutter/app/modules/home/infra/datasources/get_users_datasource.dart';
-import 'package:app_flutter/app/modules/home/infra/models/user_model.dart';
-import 'package:app_flutter/app/modules/home/infra/repositories/get_users_repository_impl.dart';
+import 'package:app_flutter/modules/home/domain/usecases/get_users_usecase_impl.dart';
+import 'package:app_flutter/modules/home/infra/datasources/get_users_datasource.dart';
+import 'package:app_flutter/modules/home/infra/models/user_model.dart';
+import 'package:app_flutter/modules/home/infra/repositories/get_users_repository_impl.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

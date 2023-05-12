@@ -14,7 +14,7 @@
       "name": "Flutter Debug : Man Motorola",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main.dart",
+      "program": "lib/main/main.dart",
       "deviceId": "motorola",
       "args": ["--debug"]
     },
@@ -22,7 +22,7 @@
       "name": "Flutter Release: Man Motorola",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main.dart",
+      "program": "lib/main/main.dartt",
       "deviceId": "motorola",
       "args": ["--release"]
     }

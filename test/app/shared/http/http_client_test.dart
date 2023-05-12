@@ -1,4 +1,4 @@
-import 'package:app_flutter/app/shared/http/http_client.dart';
+import 'package:app_flutter/modules/shared/http/http_client.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
@@ -12,7 +12,6 @@ const header = {'Content-Type': 'application/json'};
 
 void main() {
   late Dio dio;
-  late Dio dioDioMock;
   late DioAdapter dioAdapter;
   late HttpClientAdapterDio httpClientAdapterDio;
 
