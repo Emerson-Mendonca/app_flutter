@@ -33,6 +33,11 @@ class _ListUserPageState extends State<ListUserPage> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                const Divider(
+                  thickness: 0,
+                  indent: 10,
+                  endIndent: 10,
+                ),
                 Container(
                   padding: const EdgeInsets.only(left: 12, right: 12),
                   child: Row(
@@ -82,33 +87,42 @@ class _ListUserPageState extends State<ListUserPage> {
                 ),
                 Visibility(
                   visible: itemPost.imagePost == false,
-                  child: SizedBox(
-                      height: 150,
-                      width: double.infinity,
-                      child: Container(
-                        margin: const EdgeInsets.only(top: 50, left: 12),
-                        child: Column(
-                          children: [
-                            Text(
-                              itemPost.title,
-                              textAlign: TextAlign.left,
-                              style: const TextStyle(
-                                fontSize: 15,
-                              ),
-                            ),
-                            const SizedBox(height: 12),
-                            Expanded(
-                              child: Text(
-                                itemPost.body,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 12,
+                  child: Column(
+                    children: [
+                      const Divider(
+                        thickness: 0,
+                        indent: 10,
+                        endIndent: 10,
+                      ),
+                      SizedBox(
+                          height: 150,
+                          width: double.infinity,
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 10, left: 12),
+                            child: Column(
+                              children: [
+                                Text(
+                                  itemPost.title,
+                                  textAlign: TextAlign.left,
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                  ),
                                 ),
-                              ),
+                                const SizedBox(height: 12),
+                                Expanded(
+                                  child: Text(
+                                    itemPost.body,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      )),
+                          )),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 12),
                 Row(
