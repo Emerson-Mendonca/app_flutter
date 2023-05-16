@@ -67,11 +67,6 @@ class _HomeView extends State<HomeView> {
                           return Get.find<ListUserStoryWidget>();
                         }),
                       ),
-                      SizedBox(
-                          height: 0.5,
-                          child: Container(
-                            color: Colors.black12,
-                          )),
                     ],
                   ),
                 ),
