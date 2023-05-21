@@ -14,7 +14,6 @@ class InitialController extends GetxController {
   @override
   void onInit() {
     Get.find<ThemeController>().getThemeStatus();
-    _checkVersion();
     loading();
     super.onInit();
   }

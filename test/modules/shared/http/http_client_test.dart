@@ -54,7 +54,7 @@ void main() {
       dioAdapter.onGet(
         '$baseUrl$testPath',
         (request) => request.throws(
-          401,
+          500,
           dioErrorAdapter,
         ),
       );

@@ -5,7 +5,7 @@ import 'package:app_flutter/modules/shared/widgets/reusable_global_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
-class ListUserController extends GetxController with StateMixin {
+class ListUserPostController extends GetxController with StateMixin {
   final PostProvider _apiProviderPost = PostProvider();
   final CommentProvider _apiCommentProvider = CommentProvider();
 

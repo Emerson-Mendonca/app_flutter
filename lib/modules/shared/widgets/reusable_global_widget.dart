@@ -63,9 +63,9 @@ class ReusableGlobalWidget {
           ],
         ),
       ),
-      barrierColor: Colors.black38,
+
       //isDismissible: false,
-      backgroundColor: Colors.white,
+
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(10),
@@ -75,13 +75,14 @@ class ReusableGlobalWidget {
     );
   }
 
-  Future openBottomComment({
+  Future openBottomComment(
+    BuildContext context, {
     required Future<List<CommentModel>?> comment,
   }) {
     return Get.bottomSheet(
       FutureBuilder(
           future: comment,
-          builder: (_, AsyncSnapshot snapshot) {
+          builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               return SizedBox(
                 height: 350,
@@ -96,12 +97,11 @@ class ReusableGlobalWidget {
                             shrinkWrap: true,
                             scrollDirection: Axis.vertical,
                             itemCount: snapshot.data.length,
-                            itemBuilder: (_, index) {
+                            itemBuilder: (context, index) {
                               final CommentModel itemComment = snapshot.data[index];
                               final UserModel itemUser = itemComment.user;
                               return Container(
                                 margin: const EdgeInsets.only(top: 12, bottom: 3),
-                                color: Colors.black12,
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -114,7 +114,7 @@ class ReusableGlobalWidget {
                                               placeholder: kTransparentImage,
                                               image: itemUser.avatar,
                                             ).image,
-                                            radius: 20,
+                                            radius: 16,
                                           ),
                                           const SizedBox(
                                             width: 12.0,
@@ -125,10 +125,7 @@ class ReusableGlobalWidget {
                                               children: [
                                                 Text(
                                                   itemUser.name,
-                                                  style: const TextStyle(
-                                                    fontSize: 12,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Theme.of(context).colorScheme.outline),
                                                 ),
                                               ],
                                             ),
@@ -138,7 +135,6 @@ class ReusableGlobalWidget {
                                           ),
                                           const Icon(
                                             Icons.more_vert,
-                                            color: Colors.white60,
                                           ),
                                         ],
                                       ),
@@ -146,18 +142,15 @@ class ReusableGlobalWidget {
                                     const SizedBox(
                                       width: 8.0,
                                     ),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
+                                    Container(
+                                      padding: const EdgeInsets.only(top: 12, left: 55, right: 12),
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
                                           itemComment.body,
-                                          textAlign: TextAlign.left,
-                                          style: const TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.black87,
-                                          ),
+                                          style: Theme.of(context).textTheme.bodyMedium,
                                         ),
-                                      ],
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -173,9 +166,9 @@ class ReusableGlobalWidget {
             }
             return const SizedBox(height: 150, child: Center(child: CircularProgressIndicator()));
           }),
-      barrierColor: Colors.black38,
+
       //isDismissible: false,
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(10),

@@ -1,8 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:app_flutter/core/theme/controllers/theme_controller.dart';
-import 'package:app_flutter/modules/home/ui/components/user_widgets/list_user_page.dart';
-import 'package:app_flutter/modules/home/ui/components/user_widgets/list_user_story_widget.dart';
+import 'package:app_flutter/modules/home/ui/components/user_post_widgets/list_user_post_page.dart';
+import 'package:app_flutter/modules/home/ui/components/user_story_widgets/list_user_story_widget.dart';
 import 'package:app_flutter/modules/home/ui/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -79,7 +79,7 @@ class _HomeView extends State<HomeView> {
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 child: LayoutBuilder(builder: (_, constraints) {
-                  return Get.find<ListUserPage>();
+                  return Get.find<ListUserPostPage>();
                 }),
               ),
             ],

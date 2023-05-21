@@ -5,23 +5,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-import './list_user_controller.dart';
+import 'list_user_post_controller.dart';
 
-class ListUserPage extends StatefulWidget {
-  final ListUserController controller;
-  const ListUserPage(
+class ListUserPostPage extends StatefulWidget {
+  final ListUserPostController controller;
+  const ListUserPostPage(
     this.controller, {
     Key? key,
   }) : super(key: key);
 
   @override
-  State<ListUserPage> createState() => _ListUserPageState();
+  State<ListUserPostPage> createState() => _ListUserPostPageState();
 }
 
-class _ListUserPageState extends State<ListUserPage> {
+class _ListUserPostPageState extends State<ListUserPostPage> {
   @override
   Widget build(BuildContext context) {
-    final ListUserController controller = widget.controller;
     return widget.controller.obx(
       (state) => ListView.builder(
         itemCount: state.length,
@@ -130,7 +129,7 @@ class _ListUserPageState extends State<ListUserPage> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        ReusableGlobalWidget().openBottomComment(comment: controller.findCommentAll(postId: itemPost.id, userId: itemPost.userId));
+                        ReusableGlobalWidget().openBottomComment(context, comment: widget.controller.findCommentAll(postId: itemPost.id, userId: itemPost.userId));
                       },
                       child: Row(
                         children: const [
